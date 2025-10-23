@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TripStay | Nơi Nghỉ Ngơi Sau Những Cuộc Vui</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Header chung -->
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="/"><span class="mark">🏠</span><span class="text">tripstay</span></a>
+      <nav class="tabs">
+        <a class="tab-link" href="index.html"><span class="emoji">🏠</span> Nơi lưu trú</a>
+        <a class="tab-link" href="experiences.html"><span class="emoji">🎈</span> Trải nghiệm</a>
+        <a class="tab-link" href="services.html"><span class="emoji">🛎️</span> Dịch vụ</a>
+      </nav>
+      <div class="nav-actions">
+        <% if(login == null) { %>
+        <a class="link" href="/login.html">Đăng nhập</a>
+        <a class="link" href="/register.html">Đăng ký</a>
+        <% } %>
+        <% if(login != null) { %>
+        <a class="link" href="">Xin Chào <%= login.name %> !!!</a>
+        <a class="link" href="/logout.html">Đăng Xuất</a>
+        <% } %>
+      </div>
+      <% if(typeof message != 'undefined') { %>
+      <script>
+        alert('<%= message.mess ?? "" %>')
+      </script>
+      <% } %>
+  </header>
