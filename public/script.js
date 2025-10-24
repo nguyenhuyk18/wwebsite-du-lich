@@ -1,3 +1,6 @@
+
+
+
 $(".create-comment").validate({
     rules: {
         fullname: {

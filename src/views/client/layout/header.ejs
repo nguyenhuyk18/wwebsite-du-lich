@@ -25,13 +25,18 @@
         <a class="link" href="/register.html">Đăng ký</a>
         <% } %>
         <% if(login != null) { %>
-        <a class="link" href="">Xin Chào <%= login.name %> !!!</a>
-        <a class="link" href="/logout.html">Đăng Xuất</a>
+        <div class="user-dropdown">
+          <button class="user-btn">
+            👋 Xin chào, <%= login.name %> ▾
+          </button>
+          <div class="dropdown-menu">
+            <a href="/profile.html">👤 Thông tin cá nhân</a>
+            <a href="/bookings.html">🧾 Lịch sử đặt phòng</a>
+            <a href="/logout.html" class="logout">🚪 Đăng xuất</a>
+          </div>
+        </div>
         <% } %>
       </div>
-      <% if(typeof message != 'undefined') { %>
-      <script>
-        alert('<%= message.mess ?? "" %>')
-      </script>
-      <% } %>
+
   </header>
+  <div class="toast-container" aria-live="polite" aria-atomic="true"></div>

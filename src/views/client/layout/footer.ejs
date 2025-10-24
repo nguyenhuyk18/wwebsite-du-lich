@@ -29,6 +29,62 @@
   </footer>
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/jquery-validation-1.19.3/dist/jquery.validate.min.js"></script>
+  <script>
+    (function() {
+      const container = document.querySelector('.toast-container');
+
+      function showToast(message, duration = 3000) {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `
+          <div class="icon">🔔</div>
+          <div class="text">${escapeHtml(message)}</div>
+        `;
+        container.prepend(toast);
+
+        requestAnimationFrame(() => requestAnimationFrame(() => toast.classList.add('show')));
+
+        setTimeout(() => removeToast(toast), duration);
+      }
+
+      function removeToast(toast) {
+        toast.classList.remove('show');
+        toast.classList.add('hide');
+        toast.addEventListener('transitionend', () => toast.remove(), {
+          once: true
+        });
+      }
+
+      function escapeHtml(s) {
+        return String(s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/\"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      // 👇 Chèn biến từ EJS xuống
+      <% if (typeof message !== 'undefined' ) { %>
+      showToast('<%= message.mess ?? "" %>', 3000);
+      <% } %>
+    })();
+
+
+
+    document.addEventListener('click', (e) => {
+      const dropdown = document.querySelector('.user-dropdown');
+      const btn = e.target.closest('.user-btn');
+
+      // Click vào nút user
+      if (btn) {
+        dropdown.classList.toggle('open');
+      } else if (!e.target.closest('.dropdown-menu')) {
+        // Click ra ngoài thì đóng
+        dropdown?.classList.remove('open');
+      }
+    });
+  </script>
   </body>
 
   </html>
