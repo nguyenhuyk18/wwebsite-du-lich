@@ -1015,3 +1015,17 @@ button::-moz-focus-inner{ border:0; }
   from { opacity: 0; transform: translateY(-5px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+
+/* hiển thị lỗi gọn đẹp */
+label.error {
+  color: #d63031;
+  font-size: 14px;
+  margin-top: 4px;
+  display: block;
+}
+
+.auth-input.error {
+  border: 1px solid #d63031 !important;
+  background: #fff5f5;
+}
